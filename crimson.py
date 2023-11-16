@@ -119,10 +119,18 @@ if __name__ == "__main__":
         prog="Menstrual Cycle Tracker",
         description="Tracks menstrual cycle and estimates the periodicity. Looks for data by default in 'data.csv'"
     )
-    parser.add_argument("-f", "--file", type=str, action="store", help="The name of the csv file containing period data", required=False)
-    parser.add_argument("-v", "--verbose", action="store_true", required=False, help = "Shows console information")
-    parser.add_argument("-s", "--showplots", action="store_true", required=False, help = "Shows plots in a window")
-    parser.add_argument("-o", "--out", action="store_true", required=False, help = "Saves plots to .jpg files")
+    parser.add_argument("-f", "--file", 
+                        type=str, action="store", 
+                        help="The name of the csv file containing period data", required=False)
+    parser.add_argument("-v", "--verbose", 
+                        action="store_true", required=False, 
+                        help = "Shows console information")
+    parser.add_argument("-s", "--showplots", 
+                        action="store_true", required=False, 
+                        help = "Shows plots in a window")
+    parser.add_argument("-o", "--out", 
+                        action="store_true", required=False, 
+                        help = "Saves plots to .jpg files")
     args = parser.parse_args()
     file = "data.csv"
     if(args.file == None):
@@ -131,8 +139,17 @@ if __name__ == "__main__":
         file = args.file
     if(args.verbose):
         print(f"Arguments: {args.file, args.verbose, args.showplots, args.out}")
-    periodDays = getData(filename = file, verbose = args.verbose)
-    plotPeriods(periodDays = periodDays, showPlot=args.showplots, savePlot = args.out)
-    periods = findPeriodicity(periodDays=periodDays, showPlot = args.showplots, verbose = args.verbose, savePlot = args.out)
+    periodDays = getData(filename = file, 
+                         verbose = args.verbose)
+    plotPeriods(periodDays = periodDays, 
+                showPlot=args.showplots, 
+                savePlot = args.out)
+    periods = findPeriodicity(periodDays=periodDays, 
+                              showPlot = args.showplots, 
+                              verbose = args.verbose, 
+                              savePlot = args.out)
     if (args.showplots or args.out):
-        plotHistogram(periodDays = periodDays, showPlot = args.showplots, verbose = args.verbose, savePlot = args.out)
+        plotHistogram(periodDays = periodDays, 
+                      showPlot = args.showplots, 
+                      verbose = args.verbose, 
+                      savePlot = args.out)
